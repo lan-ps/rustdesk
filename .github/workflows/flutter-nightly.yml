@@ -1,4 +1,4 @@
-name: Flutter 20250401 Build
+name: Flutter 20250402 Build
 
 on:
   schedule:
@@ -12,4 +12,4 @@ jobs:
     secrets: inherit
     with:
       upload-artifact: true
-      upload-tag: "20250401"
+      upload-tag: "20250402"
