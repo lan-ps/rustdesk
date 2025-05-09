@@ -1,4 +1,4 @@
-name: Flutter Nightly Build
+name: 20250509
 
 on:
   schedule:
@@ -12,4 +12,4 @@ jobs:
     secrets: inherit
     with:
       upload-artifact: true
-      upload-tag: "nightly"
+      upload-tag: "2025050900"
