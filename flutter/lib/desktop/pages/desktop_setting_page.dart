@@ -524,7 +524,7 @@ class _GeneralState extends State<_General> {
           _OptionCheckBox(
             context,
             'Check for software update on startup',
-            kOptionEnableCheckUpdate,
+            kOptionAllowCheckUpdate,
             isServer: false,
           ),
         if (showAutoUpdate)
