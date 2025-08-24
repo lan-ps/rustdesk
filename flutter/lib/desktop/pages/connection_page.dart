@@ -40,15 +40,6 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
   double get em => 14.0;
   double? get height => bind.isIncomingOnly() ? null : em * 3;
 
-  void onUsePublicServerGuide() {
-    const url = "https://rustdesk.com/pricing";
-    canLaunchUrlString(url).then((can) {
-      if (can) {
-        launchUrlString(url);
-      }
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -62,6 +53,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
     _updateTimer?.cancel();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +87,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
                         Flexible(
                           child: Text(
                             translate('setup_server_tip'),
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: em),
+                            style: TextStyle(fontSize: em),
                           ),
                         ),
                       ],
