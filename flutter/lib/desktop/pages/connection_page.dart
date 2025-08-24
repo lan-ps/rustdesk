@@ -22,11 +22,15 @@ import '../../models/platform_model.dart';
 import '../../desktop/widgets/material_mod_popup_menu.dart' as mod_menu;
 
 class OnlineStatusWidget extends StatefulWidget {
-  const OnlineStatusWidget({Key? key, this.onSvcStatusChanged})
-      : super(key: key);
+  const OnlineStatusWidget({
+    Key? key,
+    this.onSvcStatusChanged,
+    this.onUsePublicServerGuide, // 新增回调参数
+  }) : super(key: key);
 
   final VoidCallback? onSvcStatusChanged;
-
+  final VoidCallback? onUsePublicServerGuide;
+  
   @override
   State<OnlineStatusWidget> createState() => _OnlineStatusWidgetState();
 }
@@ -81,7 +85,7 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
                 Text(', ', style: TextStyle(fontSize: em)),
                 Flexible(
                   child: InkWell(
-                    onTap: onUsePublicServerGuide,
+                    onTap: widget.onUsePublicServerGuide,
                     child: Row(
                       children: [
                         Flexible(
