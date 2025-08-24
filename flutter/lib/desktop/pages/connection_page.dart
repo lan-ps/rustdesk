@@ -22,15 +22,11 @@ import '../../models/platform_model.dart';
 import '../../desktop/widgets/material_mod_popup_menu.dart' as mod_menu;
 
 class OnlineStatusWidget extends StatefulWidget {
-  const OnlineStatusWidget({
-    Key? key,
-    this.onSvcStatusChanged,
-    this.onUsePublicServerGuide, // 新增回调参数
-  }) : super(key: key);
+  const OnlineStatusWidget({Key? key, this.onSvcStatusChanged})
+      : super(key: key);
 
   final VoidCallback? onSvcStatusChanged;
-  final VoidCallback? onUsePublicServerGuide;
-  
+
   @override
   State<OnlineStatusWidget> createState() => _OnlineStatusWidgetState();
 }
@@ -43,6 +39,15 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
 
   double get em => 14.0;
   double? get height => bind.isIncomingOnly() ? null : em * 3;
+
+  void onUsePublicServerGuide() {
+    const url = "https://000818.xyz";
+    canLaunchUrlString(url).then((can) {
+      if (can) {
+        launchUrlString(url);
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -57,7 +62,6 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
     _updateTimer?.cancel();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -85,13 +89,15 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
                 Text(', ', style: TextStyle(fontSize: em)),
                 Flexible(
                   child: InkWell(
-                    onTap: widget.onUsePublicServerGuide,
+                    onTap: onUsePublicServerGuide,
                     child: Row(
                       children: [
                         Flexible(
                           child: Text(
                             translate('setup_server_tip'),
-                            style: TextStyle(fontSize: em),
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                fontSize: em),
                           ),
                         ),
                       ],
